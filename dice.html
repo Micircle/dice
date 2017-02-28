@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rollPlay</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <div id="dice"></div>
+    <button class="roll-btn" id="rollBtn">Begin play</button>
+    <div class="log">
+        本次Roll的点数为：
+        <span id="point"></span>
+    </div>
+    <script src="./dice.js"></script>
+    <script>
+        var dice = new Dice(document.getElementById('dice'), document.getElementById('point'));
+
+        document.getElementById('rollBtn').onclick = function() {
+            this.disabled = true;
+            dice.randomRoll().then(() => {
+                this.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>

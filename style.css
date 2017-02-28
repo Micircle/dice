@@ -1,0 +1,233 @@
+body {
+    background: #666;
+}
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.wrapper {
+    width: 200px;
+    margin: 200px auto;
+    perspective: 1000px;
+    perspective-origin: 220% -180%;
+}
+
+.dice-box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    font-size: 30px;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+}
+
+.dice-box li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 1);
+    padding: 20px;
+    box-sizing: border-box;
+    justify-content: space-around;
+    border-radius: 30px;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 10px #eee inset;
+}
+
+.dice-box li:after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: inherit;
+    border-radius: 30px;
+    transform: translateZ(-20px);
+}
+
+.dice-box li:nth-child(2):after {
+    transform: translateZ(20px);
+}
+
+.dice-box div {
+    display: flex;
+}
+
+.dice-box li:first-child {
+    transform-origin: top center;
+    transform: rotateX(90deg) translateY(-100px);
+}
+
+.dice-box li:nth-child(2) {
+    transform: translateZ(-100px);
+    flex-direction: column;
+}
+
+.dice-box li:nth-child(3) {
+    transform-origin: left center;
+    transform: rotateY(-90deg) translateX(-100px);
+}
+
+.dice-box li:nth-child(3) span:nth-child(1) {
+    align-self: flex-end;
+}
+
+.dice-box li:nth-child(3) span:nth-child(3) {
+    align-self: flex-start;
+}
+
+.dice-box li:nth-child(4) {
+    transform-origin: right center;
+    transform: rotateY(90deg) translateX(100px);
+}
+
+.dice-box li:nth-child(4) div{
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.dice-box li:nth-child(5) div:not(:nth-child(2)){
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dice-box li:nth-child(5) {
+    transform: translateZ(100px);
+}
+
+.dice-box li:nth-child(6) {
+    transform-origin: bottom center;
+    transform: rotateX(-90deg) translateY(100px);
+    flex-direction: column;
+}
+
+.dice-box li:nth-child(6) div {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dice-box span{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    background: rgba(255, 0, 0, 1);
+    box-shadow: 0 0 20px #999 inset;
+}
+
+.rolling {
+    animation: rolling 2s linear forwards;
+}
+
+.roll-one {
+    animation: rollOne 2s ease-out forwards;
+}
+.roll-two {
+    animation: rollTwo .5s ease-out forwards;
+}
+.roll-three {
+    animation: rollThree .5s ease-out forwards;
+}
+.roll-four {
+    animation: rollFour .5s ease-out forwards;
+}
+.roll-five {
+    animation: rollFive .5s ease-out forwards;
+}
+.roll-six {
+    animation: rollSix .5s ease-out forwards;
+}
+
+@keyframes rolling {
+    0% {
+        transform: rotate3d(0, 0, 0, 0);
+    }
+    100% {
+        transform: rotate3d(1, 1, 1, 3600deg);
+    }
+}
+
+@keyframes rollOne {
+    0% {
+        transform: rotate3d(1, 1, 1, 3600deg);
+    }
+    100% {
+        transform: rotate3d(0, 0, 0, 3960deg);
+    }
+}
+
+@keyframes rollTwo {
+    0% {
+        transform: rotate3d(1, 1, 1, 3600deg);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, 3510deg);
+    }
+}
+
+@keyframes rollThree {
+    0% {
+        transform: rotate3d(1, 1, 1, 3600deg);
+    }
+    100% {
+        transform: rotate3d(0, 0, 1, 3690deg);
+    }
+}
+
+@keyframes rollFour {
+    0% {
+        transform: rotate3d(1, 1, 1, 3600deg);
+    }
+    100% {
+        transform: rotate3d(0, 0, 1, 3510deg);
+    }
+}
+
+@keyframes rollFive {
+    0% {
+        transform: rotate3d(1, 1, 1, 3600deg);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, 3690deg);
+    }
+}
+
+@keyframes rollSix {
+    0% {
+        transform: rotate3d(1, 1, 1, 3600deg);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, 3780deg);
+    }
+}
+
+.log {
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+}
+
+.roll-btn {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 20px;
+    outline: none;
+    background: linear-gradient(0, #999, #fff, #999);
+    border: none;
+}
+
+.roll-btn[disabled] {
+    cursor: default;
+}
