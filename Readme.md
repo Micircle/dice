@@ -8,3 +8,7 @@
 调用dice.randomRoll()可以随机roll一个1-6的点数
 
 调用dice.rollTo(num)可以获取想要的点数（1-6）
+
+效果如下：
+
+![dice 效果图](./dice.png)
